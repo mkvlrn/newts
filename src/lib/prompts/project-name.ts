@@ -1,8 +1,6 @@
 import { access } from "node:fs/promises";
 import { input } from "@inquirer/prompts";
-// TODO: remove this when chalk mantainers decide to do esm the right way
-// eslint-disable-next-line import/default
-import chalk from "chalk";
+import { chalk } from "~/lib/misc/chalk.js";
 
 export async function promptProjectName() {
   return input({

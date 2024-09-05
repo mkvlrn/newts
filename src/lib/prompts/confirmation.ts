@@ -1,7 +1,5 @@
 import { select } from "@inquirer/prompts";
-// TODO: remove this when chalk mantainers decide to do esm the right way
-// eslint-disable-next-line import/default
-import chalk from "chalk";
+import { chalk } from "~/lib/misc/chalk.js";
 import type { PackageManager } from "~/types.js";
 
 export function promptConfirmation(

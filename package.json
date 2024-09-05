@@ -10,7 +10,7 @@
   },
   "type": "module",
   "bin": {
-    "mkvlrn-ts-new": "dist/main.js"
+    "mkvlrn-newts": "dist/main.js"
   },
   "engines": {
     "node": ">=20"
@@ -27,7 +27,7 @@
   "scripts": {
     "test": "vitest --run",
     "test:cov": "rm -rf coverage && vitest run --coverage",
-    "dev": "node --import tsx src/index.ts",
+    "dev": "node --import tsx src/main.ts",
     "lint": "eslint --fix src tests",
     "format": "prettier --write src tests",
     "build": "rm -rf dist && node --import tsx esbuild.config.ts",

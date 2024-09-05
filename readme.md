@@ -1,6 +1,6 @@
-# @mkvlrn/ts-new
+# @mkvlrn/newts
 
-This is a _very_ _VERY_ **VERY** opinionated CLI tool for the setup of a TypeScript project in pure Node.js, NestJS, Vite (for a React SPA), and Next.js, with a focus on code quality and consistency.
+This is a _very_ _VERY_ **VERY** opinionated CLI tool and set of templatesfor the setup of a TypeScript project in pure Node.js, NestJS, Vite (for a React SPA), and Next.js, with a focus on code quality and consistency.
 
 It attempts to provide a minimalistic setup with modern tools and practices without bloat - but bloat means different things to different people, so your mileage may vary.
 
@@ -12,7 +12,7 @@ It attempts to provide a minimalistic setup with modern tools and practices with
 
 ## usage
 
-Usage is as follows: `npx --yes @mkvlrn/ts-new@latest`. The CLI is interactive.
+Usage is as follows: `npx --yes @mkvlrn/newts@latest`. The CLI is interactive.
 
 The `--yes` flag is used to skip the npx confirmation prompt, and the `@latest` tag is used to ensure you are always getting the latest version of the tool.
 

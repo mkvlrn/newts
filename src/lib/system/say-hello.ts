@@ -1,9 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-// TODO: remove this when chalk mantainers decide to do esm the right way
-// eslint-disable-next-line import/default
-import chalk from "chalk";
+import { chalk } from "~/lib/misc/chalk.js";
 
 export async function sayHello(): Promise<void> {
   const packageDirectory = path.resolve(
