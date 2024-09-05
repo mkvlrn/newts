@@ -1,0 +1,65 @@
+{
+  "name": "@mkvlrn/newts",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "A very opinionated cli tool for setting up multiple typescript projects",
+  "author": "Mike Valeriano <mkvlrn@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mkvlrn/newts.git"
+  },
+  "type": "module",
+  "bin": {
+    "mkvlrn-ts-new": "dist/main.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "readme.md"
+  ],
+  "scripts": {
+    "test": "vitest --run",
+    "test:cov": "rm -rf coverage && vitest run --coverage",
+    "dev": "node --import tsx src/index.ts",
+    "lint": "eslint --fix src tests",
+    "format": "prettier --write src tests",
+    "build": "rm -rf dist && node --import tsx esbuild.config.ts",
+    "start": "node dist/main.js",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.4.1",
+    "@commitlint/config-conventional": "^19.4.1",
+    "@mkvlrn/eslint": "^0.1.2",
+    "@mkvlrn/prettier": "^0.0.5",
+    "@mkvlrn/tsconfig": "^0.0.4",
+    "@types/adm-zip": "^0.5.5",
+    "@types/node": "^22.5.4",
+    "@vitest/coverage-v8": "^2.0.5",
+    "esbuild": "^0.23.1",
+    "eslint": "^9.9.1",
+    "glob": "^11.0.0",
+    "husky": "^9.1.5",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "tsc-alias": "^1.8.10",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.4",
+    "vite-tsconfig-paths": "^5.0.1",
+    "vitest": "^2.0.5"
+  },
+  "dependencies": {
+    "@inquirer/core": "^9.1.0",
+    "@inquirer/prompts": "^5.4.0",
+    "adm-zip": "^0.5.16",
+    "chalk": "^5.3.0",
+    "ora": "^8.1.0"
+  }
+}

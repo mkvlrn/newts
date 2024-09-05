@@ -1,0 +1,9 @@
+{
+  "extends": "@mkvlrn/tsconfig/tsconfig.node.json",
+  "compilerOptions": {
+    "rootDir": "./",
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "paths": { "~/*": ["./src/*"], "#/*": ["./tests/*"] }
+  }
+}
