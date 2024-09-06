@@ -1,5 +1,5 @@
 import { select } from "@inquirer/prompts";
-import { chalk } from "~/lib/misc/chalk.js";
+import { dim, redBright, yellow } from "colorette";
 import type { PackageManager } from "~/types.js";
 
 export function promptConfirmation(
@@ -9,20 +9,18 @@ export function promptConfirmation(
   packageManager: PackageManager,
   gitInit: boolean,
 ) {
-  const highlightType = chalk.redBright(projectType.split("-").pop());
-  const highlightProject = chalk.redBright(`./${projectName}`);
+  const highlightType = redBright(projectType.split("-").pop() ?? "Unknown");
+  const highlightProject = redBright(`./${projectName}`);
   const highlightPackageInstallation = installPackages
-    ? chalk.redBright(`will be installed with ${packageManager}`)
-    : chalk.redBright("will not be installed");
-  const highlightGitInit = chalk.redBright(
-    `will ${gitInit ? "" : "not "}be initialized`,
-  );
+    ? redBright(`will be installed with ${packageManager}`)
+    : redBright("will not be installed");
+  const highlightGitInit = redBright(`will ${gitInit ? "" : "not "}be initialized`);
   let message = `This will create a ${highlightType} project in ${highlightProject}, `;
   message += `packages ${highlightPackageInstallation}, and a git repository `;
   message += `${highlightGitInit}.`;
 
   return select({
-    message: chalk.dim.yellow(`${message} Continue?`),
+    message: dim(yellow(`${message} Continue?`)),
     choices: [
       { value: true, name: "Yes" },
       { value: false, name: "No" },

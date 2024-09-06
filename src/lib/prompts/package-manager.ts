@@ -1,11 +1,11 @@
 import { select } from "@inquirer/prompts";
-import { chalk } from "~/lib/misc/chalk.js";
+import { dim, yellow } from "colorette";
 import type { PackageManager } from "~/types.js";
 
 export function promptPackageManager(availablePackageManagers: PackageManager[]) {
   const knownPackageManagers: PackageManager[] = ["npm", "yarn", "pnpm"];
   return select({
-    message: chalk.dim.yellow("Package manager"),
+    message: dim(yellow("Package manager")),
     choices: knownPackageManagers.map((packageManager) => ({
       value: packageManager,
       name: packageManager,

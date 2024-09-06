@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { chalk } from "~/lib/misc/chalk.js";
+import { bold, cyanBright, greenBright } from "colorette";
 
 export async function sayHello(): Promise<void> {
   const packageDirectory = path.resolve(
@@ -13,8 +13,8 @@ export async function sayHello(): Promise<void> {
     name: string;
     version: string;
   };
-  const thisProject = chalk.cyanBright.bold(packageJsonContents.name);
-  const version = chalk.greenBright.bold(packageJsonContents.version);
+  const thisProject = bold(cyanBright(packageJsonContents.name));
+  const version = bold(greenBright(packageJsonContents.version));
 
   // eslint-disable-next-line no-console
   console.info(`🤖 ${thisProject} v${version}`);

@@ -1,10 +1,10 @@
 import { access } from "node:fs/promises";
 import { input } from "@inquirer/prompts";
-import { chalk } from "~/lib/misc/chalk.js";
+import { dim, yellow } from "colorette";
 
 export async function promptProjectName() {
   return input({
-    message: chalk.dim.yellow("Project name"),
+    message: dim(yellow("Project name")),
     default: "my-project",
     validate: async (projectName) => {
       const isValidFilename = /^[A-Za-z][\w.-]*$/g.test(projectName);

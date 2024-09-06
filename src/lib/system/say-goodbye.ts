@@ -1,20 +1,18 @@
-import { chalk } from "~/lib/misc/chalk.js";
+import { cyanBright, yellowBright } from "colorette";
 
 export function sayGoodbye(projectPath: string | false | null = null): void {
   if (projectPath === null) {
     // eslint-disable-next-line no-console
-    console.info(chalk.cyanBright("👋 Goodbye!"));
+    console.info(cyanBright("👋 Goodbye!"));
     return;
   }
 
   if (projectPath === false) {
     // eslint-disable-next-line no-console
-    console.info(chalk.cyanBright("👋 Goodbye. 😞"));
+    console.info(cyanBright("👋 Goodbye. 😞"));
     return;
   }
 
   // eslint-disable-next-line no-console
-  console.info(
-    chalk.cyanBright(`🚀 Your project is ready at ${chalk.yellowBright(projectPath)}`),
-  );
+  console.info(cyanBright(`🚀 Your project is ready at ${yellowBright(projectPath)}`));
 }
