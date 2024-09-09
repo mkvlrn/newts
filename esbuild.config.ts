@@ -1,18 +1,23 @@
+import { rm } from "node:fs/promises";
 import { build } from "esbuild";
 import { glob } from "glob";
 import { replaceTscAliasPaths } from "tsc-alias";
 import { compilerOptions } from "./tsconfig.json";
 
-const entryPoints = await glob(["src/**/*.ts"], { ignore: "src/types.ts" });
+const entryPoints = await glob("src/**/*.ts", { ignore: "src/types.ts" });
 const { outDir } = compilerOptions;
+
+// clean
+await rm(outDir, { recursive: true, force: true });
 
 // nothing special
 await build({
   entryPoints,
   outdir: outDir,
+  treeShaking: true,
   bundle: false,
   platform: "node",
-  target: "node22",
+  target: "esnext",
   sourcemap: false,
   minify: false,
   tsconfig: "./tsconfig.json",
