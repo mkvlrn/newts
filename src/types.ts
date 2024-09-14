@@ -5,4 +5,4 @@ export interface GithubRepoResponse {
   is_template: boolean;
 }
 
-export type PackageManager = "npm" | "yarn" | "pnpm";
+export type PackageManager = "npm" | "yarn" | "pnpm" | "bun";

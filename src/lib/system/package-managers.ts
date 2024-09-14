@@ -3,7 +3,7 @@ import { exec } from "~/lib/system/exec.js";
 import type { PackageManager } from "~/types.js";
 
 export async function getPackageManagers(): Promise<PackageManager[]> {
-  const knownPackageManagers: PackageManager[] = ["npm", "yarn", "pnpm"];
+  const knownPackageManagers: PackageManager[] = ["npm", "yarn", "pnpm", "bun"];
   const availablePackageManagers: PackageManager[] = [];
 
   try {
