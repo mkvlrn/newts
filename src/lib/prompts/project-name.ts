@@ -1,10 +1,10 @@
-import { access } from "node:fs/promises";
-import { input } from "@inquirer/prompts";
-import { dim, yellow } from "colorette";
+import fs from "node:fs/promises";
+import * as prompts from "@inquirer/prompts";
+import * as colorette from "colorette";
 
 export async function promptProjectName() {
-  return input({
-    message: dim(yellow("Project name")),
+  return prompts.input({
+    message: colorette.dim(colorette.yellow("Project name")),
     default: "my-project",
     validate: async (projectName) => {
       const isValidFilename = /^[A-Za-z][\w.-]*$/g.test(projectName);
@@ -13,7 +13,7 @@ export async function promptProjectName() {
       }
 
       try {
-        await access(projectName);
+        await fs.access(projectName);
         return "A directory with this name already exists.";
       } catch {
         return true;

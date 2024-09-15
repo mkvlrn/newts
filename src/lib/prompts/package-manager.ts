@@ -1,12 +1,11 @@
-import { select } from "@inquirer/prompts";
-import { dim, yellow } from "colorette";
-import type { PackageManager } from "~/types.js";
+import * as prompts from "@inquirer/prompts";
+import * as colorette from "colorette";
+import { PackageManager, packageManagers } from "~/types.js";
 
 export function promptPackageManager(availablePackageManagers: PackageManager[]) {
-  const knownPackageManagers: PackageManager[] = ["npm", "yarn", "pnpm", "bun"];
-  return select({
-    message: dim(yellow("Package manager")),
-    choices: knownPackageManagers.map((packageManager) => ({
+  return prompts.select({
+    message: colorette.dim(colorette.yellow("Package manager")),
+    choices: packageManagers.map((packageManager) => ({
       value: packageManager,
       name: packageManager,
       disabled: availablePackageManagers.includes(packageManager)

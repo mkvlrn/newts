@@ -5,4 +5,5 @@ export interface GithubRepoResponse {
   is_template: boolean;
 }
 
-export type PackageManager = "npm" | "yarn" | "pnpm" | "bun";
+export const packageManagers = ["npm", "yarn", "pnpm", "bun"] as const;
+export type PackageManager = (typeof packageManagers)[number];

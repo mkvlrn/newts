@@ -1,18 +1,17 @@
 import type { ExecSyncOptionsWithBufferEncoding } from "node:child_process";
-import { exec } from "~/lib/system/exec.js";
-import type { PackageManager } from "~/types.js";
+import * as system from "~/lib/system/exec.js";
+import { PackageManager, packageManagers } from "~/types.js";
 
 export async function getPackageManagers(): Promise<PackageManager[]> {
-  const knownPackageManagers: PackageManager[] = ["npm", "yarn", "pnpm", "bun"];
   const availablePackageManagers: PackageManager[] = [];
 
   try {
-    for (const pm of knownPackageManagers) {
+    for (const pm of packageManagers) {
       try {
         const execOpt: ExecSyncOptionsWithBufferEncoding = {
           stdio: "ignore",
         };
-        await exec(`${pm} --version`, execOpt);
+        await system.exec(`${pm} --version`, execOpt);
         availablePackageManagers.push(pm);
       } catch {
         continue;
