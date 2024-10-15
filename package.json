@@ -37,10 +37,10 @@
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
-    "@mkvlrn/configurations": "^1.0.6",
+    "@mkvlrn/configurations": "^1.0.7",
     "@types/adm-zip": "^0.5.5",
     "@types/node": "^22.7.5",
-    "@vitest/coverage-v8": "^2.1.2",
+    "@vitest/coverage-v8": "^2.1.3",
     "esbuild": "^0.24.0",
     "esbuild-plugin-file-path-extensions": "^2.1.3",
     "eslint": "^9.12.0",
@@ -52,7 +52,7 @@
     "tsx": "^4.19.1",
     "typescript": "^5.6.3",
     "vite-tsconfig-paths": "^5.0.1",
-    "vitest": "^2.1.2"
+    "vitest": "^2.1.3"
   },
   "dependencies": {
     "@inquirer/core": "^10.0.0",
