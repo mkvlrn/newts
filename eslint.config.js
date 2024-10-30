@@ -1,9 +1,9 @@
-import { base } from "@mkvlrn/configurations/eslint";
+import base from "@mkvlrn/config/eslint-node";
 
-/** @type {import("typescript-eslint").ConfigWithExtends[]} */
 export default [
   ...base,
+
   {
-    ignores: ["dist", "node_modules"],
+    ignores: ["node_modules", "dist"],
   },
 ];

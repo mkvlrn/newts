@@ -1,12 +1,12 @@
 # @mkvlrn/newts
 
-This is a _very_ _VERY_ **VERY** opinionated CLI tool and set of templatesfor the setup of a TypeScript project in pure Node.js, NestJS, Vite (for a React SPA), and Next.js, with a focus on code quality and consistency.
+This is a _very_ _VERY_ **VERY** opinionated CLI tool and set of templates for the setup of a few different TypeScript projects with a focus on code quality and consistency from the start.
 
 It attempts to provide a minimalistic setup with modern tools and practices without bloat - but bloat means different things to different people, so your mileage may vary.
 
 ## requirements
 
-- Node.js 20+ - don't use anything lower than that, it's 2024
+- Node.js 20+ - don't use anything lower than that, node 22 is the current LTS, keep up
 - npm 10+ (npx should be used to run the CLI tool, but you can pick any package manager you want for the project itself)
 - A unix-like shell - if you're on Windows, you should use WSL2 or Git Bash
 

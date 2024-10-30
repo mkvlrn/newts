@@ -15,6 +15,6 @@ export default defineConfig({
     env: { NODE_ENV: "test" },
     environment: "node",
     passWithNoTests: true,
-    setupFiles: ["./tests/__setup/vitest.setup.ts"],
+    setupFiles: ["./test/_setup/vitest.setup.ts"],
   },
 });

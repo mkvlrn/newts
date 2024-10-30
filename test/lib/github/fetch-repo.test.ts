@@ -10,7 +10,7 @@ const { server, startServer, closeServer } = getTestServer("repo");
 let baseUrl: string;
 
 beforeEach(async () => {
-  chdir("tests");
+  chdir("test");
   await startServer();
   const { port } = server.address() as AddressInfo;
   baseUrl = `http://localhost:${port}`;
