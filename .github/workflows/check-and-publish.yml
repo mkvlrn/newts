@@ -1,15 +1,29 @@
-name: publish
+name: check-and-publish
 
 on:
-  workflow_run:
+  push:
     branches:
       - main
-    workflows: ['sonar']
-    types:
-      - completed
+  pull_request:
+    branches:
+      - main
 
 jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 22
+    - run: yarn install
+    - run: yarn tsc --noEmit
+    - run: yarn eslint src/**/*.ts test/**/*.ts
+    - run: yarn prettier --check src test
+    - run: yarn vitest --run
+
   publish:
+    needs: check
     name: publish to npm
     runs-on: ubuntu-latest
     permissions:
