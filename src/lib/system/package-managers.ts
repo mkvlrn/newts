@@ -21,9 +21,7 @@ export async function getPackageManagers(): Promise<PackageManager[]> {
       throw new Error("no available package managers found");
     }
   } catch (error) {
-    throw new Error(
-      `failed to check for available package managers (${(error as Error).message})`,
-    );
+    throw new Error(`failed to check for available package managers (${(error as Error).message})`);
   }
 
   return availablePackageManagers;

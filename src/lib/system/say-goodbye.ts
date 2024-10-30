@@ -15,8 +15,6 @@ export function sayGoodbye(projectPath: string | false | null = null): void {
 
   // eslint-disable-next-line no-console
   console.info(
-    colorette.cyanBright(
-      `🚀 Your project is ready at ${colorette.yellowBright(projectPath)}`,
-    ),
+    colorette.cyanBright(`🚀 Your project is ready at ${colorette.yellowBright(projectPath)}`),
   );
 }
