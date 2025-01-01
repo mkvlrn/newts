@@ -14,6 +14,5 @@ export async function sayHello(): Promise<void> {
   const thisProject = colorette.bold(colorette.cyanBright(packageJsonContents.name));
   const version = colorette.bold(colorette.greenBright(packageJsonContents.version));
 
-  // eslint-disable-next-line no-console
   console.info(`🤖 ${thisProject} v${version}`);
 }

@@ -1,4 +1,4 @@
-import { type ExecSyncOptionsWithBufferEncoding } from "node:child_process";
+import type { ExecSyncOptionsWithBufferEncoding } from "node:child_process";
 import * as system from "~/lib/system/exec.js";
 
 export async function initializeGitRepository(projectPath: string): Promise<void> {

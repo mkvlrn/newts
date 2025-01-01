@@ -29,7 +29,9 @@ export function getTestServer(compareUrl: "repo" | "templates") {
           {
             name: "test-template",
             description: "a test template",
+            // biome-ignore lint/style/useNamingConvention: just obeying github api format
             full_name: "test template",
+            // biome-ignore lint/style/useNamingConvention: just obeying github api format
             is_template: true,
           },
         ] as GithubRepoResponse[]),

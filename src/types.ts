@@ -1,7 +1,9 @@
 export interface GithubRepoResponse {
   name: string;
+  // biome-ignore lint/style/useNamingConvention: just obeying github api format
   full_name: string;
   description: string;
+  // biome-ignore lint/style/useNamingConvention: just obeying github api format
   is_template: boolean;
 }
 

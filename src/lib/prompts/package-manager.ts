@@ -1,6 +1,6 @@
 import * as prompts from "@inquirer/prompts";
 import * as colorette from "colorette";
-import { PackageManager, packageManagers } from "~/types.js";
+import { type PackageManager, packageManagers } from "~/types.js";
 
 export function promptPackageManager(availablePackageManagers: PackageManager[]) {
   return prompts.select({

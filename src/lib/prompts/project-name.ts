@@ -3,7 +3,7 @@ import * as prompts from "@inquirer/prompts";
 import * as colorette from "colorette";
 
 export async function promptProjectName() {
-  return prompts.input({
+  return await prompts.input({
     message: colorette.dim(colorette.yellow("Project name")),
     default: "my-project",
     validate: async (projectName) => {

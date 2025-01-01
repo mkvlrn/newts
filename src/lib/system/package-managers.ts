@@ -1,6 +1,6 @@
 import type { ExecSyncOptionsWithBufferEncoding } from "node:child_process";
 import * as system from "~/lib/system/exec.js";
-import { PackageManager, packageManagers } from "~/types.js";
+import { type PackageManager, packageManagers } from "~/types.js";
 
 export async function getPackageManagers(): Promise<PackageManager[]> {
   const availablePackageManagers: PackageManager[] = [];
@@ -14,7 +14,7 @@ export async function getPackageManagers(): Promise<PackageManager[]> {
         await system.exec(`${pm} --version`, execOpt);
         availablePackageManagers.push(pm);
       } catch {
-        continue;
+        // do nothing
       }
     }
     if (availablePackageManagers.length === 0) {

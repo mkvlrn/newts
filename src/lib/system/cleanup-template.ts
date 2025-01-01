@@ -1,5 +1,5 @@
-import { type ExecSyncOptionsWithBufferEncoding } from "node:child_process";
-import { type RmOptions } from "node:fs";
+import type { ExecSyncOptionsWithBufferEncoding } from "node:child_process";
+import type { RmOptions } from "node:fs";
 import fs from "node:fs/promises";
 import path from "node:path";
 import * as system from "~/lib/system/exec.js";

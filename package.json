@@ -19,47 +19,42 @@
     "access": "public",
     "registry": "https://registry.npmjs.org"
   },
-  "files": [
-    "dist",
-    "package.json",
-    "readme.md"
-  ],
+  "files": ["dist", "package.json", "readme.md"],
   "scripts": {
-    "build": "node --import @swc-node/register/esm-register scripts/build.ts",
-    "dev": "node --import @swc-node/register/esm-register --watch src/main.ts",
-    "start": "node dist/main.js",
-    "test": "vitest --run",
-    "test:cov": "vitest run --coverage",
-    "lint": "eslint --fix src/**/*.ts test/**/*.ts",
-    "format": "prettier --write src test",
-    "typecheck": "tsc --noEmit",
-    "prepare": "husky"
+    "swc": "node --import @swc-node/register/esm-register",
+    "prebuild": "rm -rf build",
+    "build": "npx swc src -d ./build --strip-leading-paths",
+    "dev": "npm run swc -- --watch src/main.ts",
+    "start": "node build/main.js",
+    "test": "npm run swc -- scripts/test.ts",
+    "test:cov": "npm run swc -- scripts/test.ts --coverage",
+    "tidy": "npm run swc -- scripts/tidy.ts",
+    "typecheck": "npx tsc --noEmit",
+    "prepare": "npx husky"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.5.0",
-    "@commitlint/config-conventional": "^19.5.0",
-    "@mkvlrn/config": "^1.0.4",
+    "@biomejs/biome": "^1.9.4",
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
     "@swc-node/register": "^1.10.9",
-    "@swc/core": "^1.7.40",
-    "@types/adm-zip": "^0.5.6",
-    "@types/node": "^22.8.4",
-    "@vitest/coverage-v8": "^2.1.4",
-    "esbuild-plugin-file-path-extensions": "^2.1.3",
-    "eslint": "^9.13.0",
-    "fast-glob": "^3.3.2",
-    "husky": "^9.1.6",
-    "lint-staged": "^15.2.10",
-    "prettier": "^3.3.3",
-    "tsc-alias": "^1.8.10",
-    "typescript": "^5.6.3",
-    "vite-tsconfig-paths": "^5.0.1",
-    "vitest": "^2.1.4"
+    "@swc/cli": "^0.5.2",
+    "@swc/core": "^1.10.4",
+    "@types/adm-zip": "^0.5.7",
+    "@types/node": "^22.10.3",
+    "@vitest/coverage-v8": "^2.1.8",
+    "husky": "^9.1.7",
+    "typescript": "^5.7.2",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^2.1.8"
   },
   "dependencies": {
-    "@inquirer/core": "^10.0.1",
-    "@inquirer/prompts": "^7.0.1",
+    "@inquirer/core": "^10.1.2",
+    "@inquirer/prompts": "^7.2.1",
     "adm-zip": "^0.5.16",
     "colorette": "^2.0.20",
-    "ora": "^8.1.0"
+    "ora": "^8.1.1"
+  },
+  "commitlint": {
+    "extends": ["@commitlint/config-conventional"]
   }
 }

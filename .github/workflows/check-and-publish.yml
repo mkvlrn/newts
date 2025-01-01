@@ -12,15 +12,17 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 22
-    - run: yarn install
-    - run: yarn tsc --noEmit
-    - run: yarn eslint src/**/*.ts test/**/*.ts
-    - run: yarn prettier --check src test
-    - run: yarn vitest --run
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: yarn install
+      - run: |
+          if [ -f .husky/pre-push ]; then
+            bash .husky/pre-push
+          else
+            echo "No pre-push hook found"
+          fi
 
   publish:
     needs: check

@@ -10,7 +10,7 @@ export async function getGitInfo(): Promise<string | null> {
     const gitName = outGitName.trim();
     const gitEmail = outGitEmail.trim();
 
-    return !gitName || !gitEmail ? "" : `${gitName} <${gitEmail}>`;
+    return gitName && gitEmail ? `${gitName} <${gitEmail}>` : "";
   } catch {
     return null;
   }

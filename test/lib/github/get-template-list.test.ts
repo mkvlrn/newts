@@ -1,7 +1,7 @@
 import type { AddressInfo } from "node:net";
 import { afterEach, beforeEach, describe, expect, test } from "vitest";
 import { getTemplateList } from "~/lib/github/get-template-list.js";
-import { getTestServer } from "#/lib/github/test-server.js";
+import { getTestServer } from "./test-server.js";
 
 const { server, startServer, closeServer } = getTestServer("templates");
 
@@ -25,7 +25,9 @@ describe("getTemplateList", () => {
       {
         name: "test-template",
         description: "a test template",
+        // biome-ignore lint/style/useNamingConvention: just obeying github api format
         full_name: "test template",
+        // biome-ignore lint/style/useNamingConvention: just obeying github api format
         is_template: true,
       },
     ]);

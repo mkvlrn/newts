@@ -9,7 +9,7 @@ export function rollback(message: string, projectPath: string, spinner: Ora) {
       spinner.succeed();
     }
   } catch {
-    message = `Failed to roll back changes, remove ${projectPath} manually`;
-    spinner.fail(message);
+    const fullMessage = `${message}\nFailed to roll back changes, remove ${projectPath} manually`;
+    spinner.fail(fullMessage);
   }
 }
