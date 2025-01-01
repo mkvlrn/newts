@@ -10,10 +10,10 @@
   },
   "type": "module",
   "bin": {
-    "mkvlrn-newts": "dist/main.js"
+    "mkvlrn-newts": "build/main.js"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "publishConfig": {
     "access": "public",
