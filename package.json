@@ -19,7 +19,7 @@
     "access": "public",
     "registry": "https://registry.npmjs.org"
   },
-  "files": ["dist", "package.json", "readme.md"],
+  "files": ["build", "package.json", "README.md", "LICENSE"],
   "scripts": {
     "swc": "node --import @swc-node/register/esm-register",
     "prebuild": "rm -rf build",
