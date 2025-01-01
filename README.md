@@ -22,13 +22,11 @@ Each project will be an ESM (`type: module`) project with the following tools an
 
 - [editorconfig](https://editorconfig.org/) to maintain consistent coding styles between different editors and IDEs
 - [git](https://git-scm.com/) with a standard `.gitignore` file
-- [prettier](https://prettier.io/) with a opinionated configuration on top of editorconfig
-- [eslint](https://eslint.org/) with a few plugins and a configuration that aims to be somewhat strict without being too annoying; based on the recommended eslint rules for typescript and the awesome [unicorn rules](https://github.com/sindresorhus/eslint-plugin-unicorn)
+- [biome](https://github.com/biomejs/biome) to lint and format the codebase either on demand or on commit (staged files only) - let eslint and prettier die, and lint-staged is also a casualty I guess
 - [vitest](https://vitest.dev/) as a test runner, because Jest is _terrible_
-- [lint-staged](https://github.com/lint-staged/lint-staged) to glue together the other tools that need to run on staged files
 - [husky](https://github.com/typicode/husky) to run the lint-staged commands on pre-commit hooks
 - [commitlint](https://commitlint.js.org/) to enforce conventional commit messages
-- [esbuild](https://esbuild.github.io/) as a TypeScript compiler and [tsx](https://tsx.is/) as dev runner
+- [swc](https://github.com/swc-project/swc) as a TypeScript compiler and/or dev runner
 
 ## another cli, huh?
 
