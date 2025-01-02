@@ -2,7 +2,7 @@ import { readFile, readdir, rm } from "node:fs/promises";
 import type { AddressInfo } from "node:net";
 import { chdir } from "node:process";
 import { afterEach, beforeEach, describe, expect, test } from "vitest";
-import { fetchRepo } from "~/lib/github/fetch-repo.js";
+import { fetchRepo } from "~/lib/github/fetch-repo";
 import { getTestServer } from "./test-server.js";
 
 const { server, startServer, closeServer } = getTestServer("repo");

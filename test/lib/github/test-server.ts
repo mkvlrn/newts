@@ -1,7 +1,7 @@
 import { createServer } from "node:http";
 import { promisify } from "node:util";
 import AdmZip from "adm-zip";
-import type { GithubRepoResponse } from "~/types.js";
+import type { GithubRepoResponse } from "~/types";
 
 const dummyZip = new AdmZip();
 dummyZip.addFile("test-folder/", Buffer.alloc(0));

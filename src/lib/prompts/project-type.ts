@@ -1,6 +1,6 @@
 import * as prompts from "@inquirer/prompts";
 import * as colorette from "colorette";
-import type { GithubRepoResponse } from "~/types.js";
+import type { GithubRepoResponse } from "~/types";
 
 export function promptProjectType(templateList: GithubRepoResponse[]) {
   return prompts.select({

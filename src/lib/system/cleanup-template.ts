@@ -2,7 +2,7 @@ import type { ExecSyncOptionsWithBufferEncoding } from "node:child_process";
 import type { RmOptions } from "node:fs";
 import fs from "node:fs/promises";
 import path from "node:path";
-import * as system from "~/lib/system/exec.js";
+import * as system from "~/lib/system/exec";
 
 export async function cleanupTemplate(
   projectName: string,
@@ -14,7 +14,10 @@ export async function cleanupTemplate(
     // remove extraneous files
     const rmOpt: RmOptions = { force: true };
     await fs.rm(path.resolve(projectPath, ".github", "dependabot.yml"), rmOpt);
-    await fs.rm(path.resolve(projectPath, ".github", "workflows", "sonar.yml"), rmOpt);
+    await fs.rm(
+      path.resolve(projectPath, ".github", "workflows", "sonar.yml"),
+      rmOpt,
+    );
     await fs.rm(path.resolve(projectPath, "LICENSE"), rmOpt);
     await fs.rm(path.resolve(projectPath, "readme.md"), rmOpt);
     await fs.rm(path.resolve(projectPath, "package-lock.json"), rmOpt);
@@ -34,6 +37,8 @@ export async function cleanupTemplate(
     await system.exec("npm pkg delete repository", execOpt);
     await system.exec("npm pkg delete keywords ", execOpt);
   } catch (error) {
-    throw new Error(`failed to clean up template (${(error as Error).message})`);
+    throw new Error(
+      `failed to clean up template (${(error as Error).message})`,
+    );
   }
 }

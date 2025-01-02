@@ -1,6 +1,6 @@
 import type { AddressInfo } from "node:net";
 import { afterEach, beforeEach, describe, expect, test } from "vitest";
-import { getTemplateList } from "~/lib/github/get-template-list.js";
+import { getTemplateList } from "~/lib/github/get-template-list";
 import { getTestServer } from "./test-server.js";
 
 const { server, startServer, closeServer } = getTestServer("templates");
@@ -19,7 +19,9 @@ afterEach(async () => {
 
 describe("getTemplateList", () => {
   test("should fetch template list", async () => {
-    const response = await getTemplateList(`${baseUrl}/users/mkvlrn/repos?type=public`);
+    const response = await getTemplateList(
+      `${baseUrl}/users/mkvlrn/repos?type=public`,
+    );
 
     expect(response).toStrictEqual([
       {
@@ -36,6 +38,8 @@ describe("getTemplateList", () => {
   test("should throw on bad url", async () => {
     const act = getTemplateList(`${baseUrl}/badurl`);
 
-    await expect(act).rejects.toThrow("failed to fetch template list (bad url)");
+    await expect(act).rejects.toThrow(
+      "failed to fetch template list (bad url)",
+    );
   });
 });

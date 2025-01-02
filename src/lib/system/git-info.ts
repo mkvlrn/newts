@@ -1,4 +1,4 @@
-import * as system from "~/lib/system/exec.js";
+import * as system from "~/lib/system/exec";
 
 export async function getGitInfo(): Promise<string | null> {
   try {

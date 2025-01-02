@@ -1,6 +1,8 @@
-import type { GithubRepoResponse } from "~/types.js";
+import type { GithubRepoResponse } from "~/types";
 
-export async function getTemplateList(url: string): Promise<GithubRepoResponse[]> {
+export async function getTemplateList(
+  url: string,
+): Promise<GithubRepoResponse[]> {
   try {
     const response = await fetch(url);
     if (response.status !== 200) {
@@ -10,6 +12,8 @@ export async function getTemplateList(url: string): Promise<GithubRepoResponse[]
 
     return repos.filter((repo) => repo.is_template);
   } catch (error) {
-    throw new Error(`failed to fetch template list (${(error as Error).message})`);
+    throw new Error(
+      `failed to fetch template list (${(error as Error).message})`,
+    );
   }
 }

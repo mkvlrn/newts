@@ -4,17 +4,26 @@ This is a _very_ _VERY_ **VERY** opinionated CLI tool and set of templates for t
 
 It attempts to provide a minimalistic setup with modern tools and practices without bloat - but bloat means different things to different people, so your mileage may vary.
 
-## requirements
-
-- Node.js 20+ - don't use anything lower than that, node 22 is the current LTS, keep up
-- npm 10+ (npx should be used to run the CLI tool, but you can pick any package manager you want for the project itself)
-- A unix-like shell - if you're on Windows, you should use WSL2 or Git Bash
-
 ## usage
 
 Usage is as follows: `npx --yes @mkvlrn/newts@latest`. The CLI is interactive.
 
 The `--yes` flag is used to skip the npx confirmation prompt, and the `@latest` tag is used to ensure you are always getting the latest version of the tool.
+
+## the templates
+
+- [node](https://github.com/mkvlrn/template-node) - good starting point for anything node
+- [nestjs](https://github.com/mkvlrn/template-nestjs) - nestjs starter done **right**
+- [bun](https://github.com/mkvlrn/template-bun) - bun is better than node, FITE ME!
+- [discord bot](https://github.com/mkvlrn/template-discordbot) - discord bot with `discord.js`
+- [react with vite](https://github.com/mkvlrn/template-vite-react) - pretty much what [create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite) does for react, but with biome, vitest, etc.
+- [nextjs](https://github.com/mkvlrn/template-next) - what [create-next-app](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) does for nextjs, but with biome, vitest, etc; you're seeing a theme here, right?
+
+## requirements
+
+- Node.js 20+ - don't use anything lower than that, node 22 is the current LTS, keep up
+- npm 10+ (npx should be used to run the CLI tool, but you can pick any package manager you want for the project itself)
+- A unix-like shell - if you're on Windows, you should use WSL2 or Git Bash
 
 ## tools and configurations
 
