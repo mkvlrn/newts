@@ -16,19 +16,23 @@
     "formatWithErrors": true
   },
   "organizeImports": {
-    "enabled": true
+    "enabled": false
   },
   "linter": {
     "enabled": true,
     "rules": {
       "all": true,
-      "style": {
-        // tree-shaking doesn't mean anything in this project
-        "noNamespaceImport": "off"
+      "complexity": {
+        // this goes against typescript's noPropertyAccessFromIndexSignature
+        "useLiteralKeys": "off"
       },
       "correctness": {
         // this is a cli so yeah
         "noNodejsModules": "off"
+      },
+      "style": {
+        // tree-shaking doesn't mean anything in this project
+        "noNamespaceImport": "off"
       },
       "suspicious": {
         // this is a cli so yeah

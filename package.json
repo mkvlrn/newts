@@ -23,38 +23,38 @@
   "files": ["build", "package.json", "README.md", "LICENSE"],
   "scripts": {
     "prebuild": "rm -rf build",
-    "build": "npx swc src -d ./build --strip-leading-paths",
-    "postbuild": "npx tsc-alias -f",
+    "build": "swc src -d ./build --strip-leading-paths",
+    "postbuild": "tsc-alias -f",
     "dev": "node --import @swc-node/register/esm-register --watch src/main.ts",
-    "prestart": "npm run build",
     "start": "node build/main.js",
-    "test": "npx vitest run",
-    "tidy": "npx biome check --write --no-errors-on-unmatched",
-    "typecheck": "npx tsc --noEmit",
-    "prepare": "npx husky"
+    "test": "vitest",
+    "test:integration": "vitest",
+    "test:e2e": "vitest",
+    "tidy": "biome check --fix --no-errors-on-unmatched",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
     "@swc-node/register": "^1.10.9",
-    "@swc/cli": "^0.5.2",
-    "@swc/core": "^1.10.4",
+    "@swc/cli": "^0.6.0",
+    "@swc/core": "^1.10.7",
     "@types/adm-zip": "^0.5.7",
-    "@types/node": "^22.10.3",
-    "@vitest/coverage-v8": "^2.1.8",
+    "@types/node": "^22.10.5",
     "husky": "^9.1.7",
     "tsc-alias": "^1.8.10",
-    "typescript": "^5.7.2",
-    "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^2.1.8"
+    "typescript": "^5.7.3"
   },
   "dependencies": {
     "@inquirer/core": "^10.1.2",
     "@inquirer/prompts": "^7.2.1",
+    "@vitest/coverage-v8": "^2.1.8",
     "adm-zip": "^0.5.16",
     "colorette": "^2.0.20",
-    "ora": "^8.1.1"
+    "ora": "^8.1.1",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^2.1.8"
   },
   "commitlint": {
     "extends": ["@commitlint/config-conventional"]
