@@ -20,8 +20,6 @@ import { sayGoodbye } from "~/lib/system/say-goodbye";
 import { sayHello } from "~/lib/system/say-hello";
 import type { PackageManager } from "~/types";
 
-const baseUrl = "https://api.github.com";
-const templatesUrl = `${baseUrl}/users/mkvlrn/repos?type=public`;
 const spinner = ora();
 let errorPath = "";
 
@@ -41,7 +39,7 @@ try {
   spinner.succeed();
 
   spinner.start("Fetching template list from GitHub");
-  const templateList = await getTemplateList(templatesUrl);
+  const templateList = await getTemplateList();
   spinner.succeed();
 
   const projectType = await promptProjectType(templateList);
@@ -71,7 +69,7 @@ try {
   }
 
   spinner.start(`Fetching ${projectType} template from GitHub`);
-  await fetchRepo(baseUrl, projectType, projectName);
+  await fetchRepo(projectType, projectName);
   spinner.succeed();
 
   spinner.start("Cleaning up template");

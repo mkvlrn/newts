@@ -1,8 +1,8 @@
 import type { GithubRepoResponse } from "~/types";
 
-export async function getTemplateList(
-  url: string,
-): Promise<GithubRepoResponse[]> {
+export async function getTemplateList(): Promise<GithubRepoResponse[]> {
+  const url = "https://api.github.com/users/mkvlrn/repos?type=public";
+
   try {
     const response = await fetch(url);
     if (response.status !== 200) {

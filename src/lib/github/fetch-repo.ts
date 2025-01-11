@@ -3,12 +3,11 @@ import path from "node:path";
 import AdmZip from "adm-zip";
 
 export async function fetchRepo(
-  baseUrl: string,
   templateName: string,
   projectName: string,
 ): Promise<void> {
   try {
-    const url = `${baseUrl}/repos/mkvlrn/${templateName}/zipball`;
+    const url = `https://api.github.com/repos/mkvlrn/${templateName}/zipball`;
     const response = await fetch(url);
     if (response.status !== 200) {
       throw new Error("bad url");
@@ -20,7 +19,11 @@ export async function fetchRepo(
 
     const zip = new AdmZip(zipPath);
     zip.extractAllTo(process.cwd(), true);
-    const unzippedName = zip.getEntries()[0].rawEntryName;
+    const zipEntries = zip.getEntries();
+    if (zipEntries[0] === undefined) {
+      throw new Error("no entries in template zip");
+    }
+    const unzippedName = zipEntries[0].rawEntryName;
 
     await fs.rename(unzippedName, projectName);
     await fs.unlink(zipPath);
