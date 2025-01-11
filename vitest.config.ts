@@ -1,6 +1,4 @@
-// biome-ignore lint/correctness/noNodejsModules: cli
 import { readdir } from "node:fs/promises";
-// biome-ignore lint/correctness/noNodejsModules: cli
 import { resolve } from "node:path";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { defineConfig } from "vitest/config";
