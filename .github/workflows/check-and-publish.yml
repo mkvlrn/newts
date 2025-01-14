@@ -9,20 +9,22 @@ on:
       - main
 
 jobs:
-  check:
+  run-checks:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: "yarn"
       - run: yarn install
       - run: |
           # add node_modules/.bin to PATH
           export PATH=$(pwd)/node_modules/.bin:$PATH
-
           # run the pre-push hook directly
           bash .husky/pre-push
+      - run: yarn test:integration --run --reporter basic
+      - run: yarn test:e2e --run --reporter basic
 
   publish:
     needs: check

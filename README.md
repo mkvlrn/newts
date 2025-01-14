@@ -14,7 +14,6 @@ The `--yes` flag is used to skip the npx confirmation prompt, and the `@latest` 
 
 - [node](https://github.com/mkvlrn/template-node) - good starting point for anything node
 - [nestjs](https://github.com/mkvlrn/template-nestjs) - nestjs starter done **right**
-- [bun](https://github.com/mkvlrn/template-bun) - bun is better than node, FITE ME!
 - [discord bot](https://github.com/mkvlrn/template-discordbot) - discord bot with `discord.js`
 - [react with vite](https://github.com/mkvlrn/template-vite-react) - pretty much what [create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite) does for react, but with biome, vitest, etc.
 - [nextjs](https://github.com/mkvlrn/template-next) - what [create-next-app](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) does for nextjs, but with biome, vitest, etc; you're seeing a theme here, right?
@@ -29,13 +28,13 @@ The `--yes` flag is used to skip the npx confirmation prompt, and the `@latest` 
 
 Each project will be an ESM (`type: module`) project with the following tools and configurations:
 
-- [editorconfig](https://editorconfig.org/) to maintain consistent coding styles between different editors and IDEs
 - [git](https://git-scm.com/) with a standard `.gitignore` file
 - [biome](https://github.com/biomejs/biome) to lint and format the codebase either on demand or on commit (staged files only) - let eslint and prettier die, and lint-staged is also a casualty I guess
 - [vitest](https://vitest.dev/) as a test runner, because Jest is _terrible_
 - [husky](https://github.com/typicode/husky) to run the lint-staged commands on pre-commit hooks
 - [commitlint](https://commitlint.js.org/) to enforce conventional commit messages
-- [swc](https://github.com/swc-project/swc) as a TypeScript compiler and/or dev runner
+- [tsx](https://github.com/privatenumber/tsx) as a TypeScript dev runner
+- [swc](https://github.com/swc-project/swc) as a TypeScript compiler and/or dev runner (for the nest template only)
 
 ## another cli, huh?
 

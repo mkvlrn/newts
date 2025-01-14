@@ -23,14 +23,15 @@
   "files": ["build", "package.json", "README.md", "LICENSE"],
   "scripts": {
     "prebuild": "rm -rf build",
-    "build": "swc src -d ./build --strip-leading-paths",
-    "postbuild": "tsc-alias -f",
-    "dev": "node --import @swc-node/register/esm-register --watch src/main.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "postbuild": "tsc-alias -f -p tsconfig.build.json",
+    "dev": "node --import=tsx --watch src/main.ts",
     "start": "node build/main.js",
     "test": "vitest",
-    "test:integration": "vitest",
-    "test:e2e": "vitest",
-    "tidy": "biome check --fix --no-errors-on-unmatched",
+    "test:integration": "vitest --config test/integration/vitest.config.ts",
+    "test:e2e": "vitest --config test/e2e/vitest.config.ts",
+    "tidy": "biome check --fix --no-errors-on-unmatched --verbose",
+    "typecheck": "tsc --noEmit && echo 'tsc passed'",
     "prepare": "husky"
   },
   "devDependencies": {
