@@ -27,7 +27,7 @@ jobs:
       - run: yarn test:e2e --run --reporter basic
 
   publish:
-    needs: check
+    needs: run-checks
     name: publish to npm
     runs-on: ubuntu-latest
     permissions:
