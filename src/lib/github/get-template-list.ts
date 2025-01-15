@@ -12,8 +12,6 @@ export async function getTemplateList(): Promise<GithubRepoResponse[]> {
 
     return repos.filter((repo) => repo.is_template);
   } catch (error) {
-    throw new Error(
-      `failed to fetch template list (${(error as Error).message})`,
-    );
+    throw new Error(`failed to fetch template list (${(error as Error).message})`);
   }
 }

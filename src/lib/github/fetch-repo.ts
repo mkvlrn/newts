@@ -2,10 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import AdmZip from "adm-zip";
 
-export async function fetchRepo(
-  templateName: string,
-  projectName: string,
-): Promise<void> {
+export async function fetchRepo(templateName: string, projectName: string): Promise<void> {
   try {
     const url = `https://api.github.com/repos/mkvlrn/${templateName}/zipball`;
     const response = await fetch(url);

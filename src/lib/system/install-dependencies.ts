@@ -12,8 +12,6 @@ export async function installDependencies(
     };
     await system.exec(`${packageManager} install`, execOpt);
   } catch (error) {
-    throw new Error(
-      `failed to install dependencies (${(error as Error).message})`,
-    );
+    throw new Error(`failed to install dependencies (${(error as Error).message})`);
   }
 }
