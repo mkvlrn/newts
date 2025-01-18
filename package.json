@@ -30,8 +30,9 @@
     "test": "vitest",
     "test:integration": "vitest --config test/integration/vitest.config.ts",
     "test:e2e": "vitest --config test/e2e/vitest.config.ts",
-    "tidy": "biome check --fix --no-errors-on-unmatched --verbose",
-    "typecheck": "tsc --noEmit && echo 'tsc passed'",
+    "tidy:ci": "biome check --no-errors-on-unmatched",
+    "tidy": "yarn tidy:ci --fix --verbose",
+    "typecheck": "tsc --noEmit",
     "prepare": "husky"
   },
   "devDependencies": {
