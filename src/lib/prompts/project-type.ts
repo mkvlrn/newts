@@ -18,7 +18,7 @@ function formatSelectName(template: GithubRepoResponse) {
   const updatedDaysAgo =
     (Date.now() - new Date(template.updated_at).getTime()) / (1000 * 60 * 60 * 24);
 
-  let name = template.name.split("-").pop() ?? "Unknown";
+  let name = template.name.replace("template-", "");
   name += ` - ${template.description}`;
   name += `\n    updated ${updatedDaysAgo.toFixed(0)} days ago`;
 
