@@ -30,9 +30,8 @@
     "outDir": "./build",
 
     // paths for imports
-    // 🧪 is neat, don't be a hater
     "baseUrl": ".",
-    "paths": { "~/*": ["./src/*"], "🧪/*": ["./test/*"] },
+    "paths": { "~/*": ["./src/*"] },
     "rootDir": ".",
 
     // pnpm compatibility

@@ -21,9 +21,7 @@ jobs:
       - run: |
           yarn typecheck
           yarn tidy:ci
-          yarn test --run --bail=1 --reporter=default
-          yarn test:integration --run --bail=1 --reporter=default
-          yarn test:e2e --run --bail=1 --reporter=default
+          yarn test:ci
 
   publish:
     needs: run-checks
