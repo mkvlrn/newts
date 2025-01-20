@@ -10,6 +10,7 @@ export function promptProjectType(templateList: GithubRepoResponse[]) {
     choices: templateList.map((template) => ({
       name: formatSelectName(template),
       value: template.name,
+      short: template.name.replace("template-", ""),
     })),
   });
 }
