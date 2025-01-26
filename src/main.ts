@@ -1,61 +1,47 @@
 #!/usr/bin/env node
 import path from "node:path";
 import ora from "ora";
-import { fetchRepo } from "~/lib/github/fetch-repo";
-import { getTemplateList } from "~/lib/github/get-template-list";
-import { promptConfirmation } from "~/lib/prompts/confirmation";
-import { promptGitInit } from "~/lib/prompts/git-init";
-import { promptInstallPackages } from "~/lib/prompts/install-packages";
-import { promptPackageManager } from "~/lib/prompts/package-manager";
-import { promptProjectName } from "~/lib/prompts/project-name";
-import { promptProjectType } from "~/lib/prompts/project-type";
-import { cleanupTemplate } from "~/lib/system/cleanup-template";
-import { getGitInfo } from "~/lib/system/git-info";
-import { handleError } from "~/lib/system/handle-error";
-import { initializeGitRepository } from "~/lib/system/initialize-repo";
-import { installDependencies } from "~/lib/system/install-dependencies";
-import { getPackageManagers } from "~/lib/system/package-managers";
-import { rollback } from "~/lib/system/rollback";
-import { sayGoodbye } from "~/lib/system/say-goodbye";
-import { sayHello } from "~/lib/system/say-hello";
+import * as github from "~/lib/github";
+import * as prompts from "~/lib/prompts";
+import * as system from "~/lib/system";
 import type { PackageManager } from "~/types";
 
 const spinner = ora();
 let errorPath = "";
 
 try {
-  await sayHello();
+  await system.sayHello();
 
-  const projectName = await promptProjectName();
+  const projectName = await prompts.projectName();
   const projectPath = path.resolve(process.cwd(), projectName);
   errorPath = projectPath;
 
   spinner.start("Getting local git information");
-  const gitInfo = await getGitInfo();
+  const gitInfo = await system.getGitInfo();
   spinner.succeed();
 
   spinner.start("Sorting local package managers");
-  const packageManagers = await getPackageManagers();
+  const packageManagers = await system.getPackageManagers();
   spinner.succeed();
 
   spinner.start("Fetching template list from GitHub");
-  const templateList = await getTemplateList();
+  const templateList = await github.getTemplateList();
   spinner.succeed();
 
-  const projectType = await promptProjectType(templateList);
-  const installPackages = await promptInstallPackages();
+  const projectType = await prompts.projectType(templateList);
+  const installPackages = await prompts.installPackages();
 
   let packageManager: PackageManager = "npm";
   if (installPackages) {
-    packageManager = await promptPackageManager(packageManagers);
+    packageManager = await prompts.packageManager(packageManagers);
   }
 
   let gitInit = false;
   if (gitInfo) {
-    gitInit = await promptGitInit();
+    gitInit = await prompts.gitInit();
   }
 
-  const confirm = await promptConfirmation(
+  const confirm = await prompts.confirmation(
     projectName,
     projectType,
     installPackages,
@@ -64,33 +50,33 @@ try {
   );
 
   if (!confirm) {
-    sayGoodbye();
+    system.sayGoodbye();
     process.exit(0);
   }
 
   spinner.start(`Fetching ${projectType} template from GitHub`);
-  await fetchRepo(projectType, projectName);
+  await github.fetchRepo(projectType, projectName);
   spinner.succeed();
 
   spinner.start("Cleaning up template");
-  await cleanupTemplate(projectName, projectPath, gitInit, gitInfo);
+  await system.cleanupTemplate(projectName, projectPath, gitInit, gitInfo);
   spinner.succeed();
 
   if (installPackages) {
     spinner.start(`Installing dependencies using ${packageManager}`);
-    await installDependencies(projectName, packageManager);
+    await system.installDependencies(projectName, packageManager);
     spinner.succeed();
   }
 
   if (gitInit) {
     spinner.start("Initializing git repository");
-    await initializeGitRepository(projectPath);
+    await system.initializeGitRepository(projectPath);
     spinner.succeed();
   }
 
-  sayGoodbye(projectPath);
+  system.sayGoodbye(projectPath);
 } catch (error) {
-  const [exitCode, message] = handleError(error);
-  rollback(message, errorPath, spinner);
+  const [exitCode, message] = system.handleError(error);
+  system.rollback(message, errorPath, spinner);
   process.exit(exitCode);
 }

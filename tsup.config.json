@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/egoist/tsup/refs/heads/main/schema.json",
+  "entry": ["src/main.ts"],
+  "outDir": "build",
+  "format": ["esm"],
+  "target": "esnext",
+  "platform": "node",
+  "dts": false,
+  "sourcemap": false,
+  "splitting": true,
+  "cjsInterop": false,
+  "bundle": true,
+  "minify": false,
+  "noExternal": []
+}
