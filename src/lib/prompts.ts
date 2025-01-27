@@ -94,12 +94,12 @@ export function confirmation(
     ? colorette.redBright(`will be installed with ${packageManager}`)
     : colorette.redBright("will not be installed");
   const highlightGitInit = colorette.redBright(`will ${gitInit ? "" : "not "}be initialized`);
-  let message = `This will create a ${highlightType} project in ${highlightProject}, `;
-  message += `packages ${highlightPackageInstallation}, and a git repository `;
-  message += `${highlightGitInit}.`;
+  let message = `This will create a ${highlightType} project in ${highlightProject}.\n`;
+  message += `Packages ${highlightPackageInstallation}.\n`;
+  message += `A git repository ${highlightGitInit}.\n`;
 
   return prompts.select({
-    message: colorette.dim(colorette.yellow(`${message} Continue?`)),
+    message: colorette.dim(colorette.yellow(`${message}Continue?`)),
     choices: [
       { value: true, name: "Yes" },
       { value: false, name: "No" },

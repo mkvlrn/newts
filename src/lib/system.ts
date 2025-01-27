@@ -101,7 +101,7 @@ export async function initializeGitRepository(projectPath: string): Promise<void
     await exec('git commit -m "chore: initial commit"', execOpt);
     await exec("npm run prepare", execOpt);
   } catch (error) {
-    throw new Error(`failed to initiate git repository (${(error as Error).message})`);
+    throw new Error(`failed to initialize git repository (${(error as Error).message})`);
   }
 }
 
