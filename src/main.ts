@@ -1,17 +1,20 @@
 #!/usr/bin/env node
+import fs from "node:fs/promises";
 import path from "node:path";
 import ora from "ora";
 import * as github from "~/lib/github";
 import * as prompts from "~/lib/prompts";
 import * as system from "~/lib/system";
 import type { PackageManager } from "~/types";
-import pkg from "../package.json" assert { type: "json" };
 
 const spinner = ora();
 let errorPath = "";
+const pkgPath = path.resolve(import.meta.dirname, "../package.json");
+const pkgFile = await fs.readFile(pkgPath, "utf8");
+const { name, version } = JSON.parse(pkgFile) as { name: string; version: string };
 
 try {
-  system.sayHello(pkg.name, pkg.version);
+  system.sayHello(name, version);
 
   const projectName = await prompts.projectName();
   const projectPath = path.resolve(process.cwd(), projectName);
