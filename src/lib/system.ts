@@ -12,19 +12,11 @@ import { type PackageManager, packageManagers } from "~/types";
 
 const exec = promisify(childProcess.exec);
 
-export async function sayHello(): Promise<void> {
-  // biome-ignore lint/style/noNonNullAssertion: will always be there
-  const packageDirectory = path.resolve(path.dirname(process.argv[1]!), "..");
-  const packageJsonPath = path.resolve(packageDirectory, "package.json");
-  const packageJsonFile = await fs.readFile(packageJsonPath, "utf8");
-  const packageJsonContents = JSON.parse(packageJsonFile) as {
-    name: string;
-    version: string;
-  };
-  const thisProject = colorette.bold(colorette.cyanBright(packageJsonContents.name));
-  const version = colorette.bold(colorette.greenBright(packageJsonContents.version));
+export function sayHello(name: string, version: string): void {
+  const thisProject = colorette.bold(colorette.cyanBright(name));
+  const versionInColor = colorette.bold(colorette.greenBright(version));
 
-  console.info(`🤖 ${thisProject} v${version}`);
+  console.info(`🤖 ${thisProject} v${versionInColor}`);
 }
 
 export function sayGoodbye(projectPath: string | false | null = null): void {

@@ -5,12 +5,13 @@ import * as github from "~/lib/github";
 import * as prompts from "~/lib/prompts";
 import * as system from "~/lib/system";
 import type { PackageManager } from "~/types";
+import pkg from "../package.json" assert { type: "json" };
 
 const spinner = ora();
 let errorPath = "";
 
 try {
-  await system.sayHello();
+  system.sayHello(pkg.name, pkg.version);
 
   const projectName = await prompts.projectName();
   const projectPath = path.resolve(process.cwd(), projectName);
@@ -76,6 +77,7 @@ try {
 
   system.sayGoodbye(projectPath);
 } catch (error) {
+  console.error((error as Error).message);
   const [exitCode, message] = system.handleError(error);
   system.rollback(message, errorPath, spinner);
   process.exit(exitCode);
