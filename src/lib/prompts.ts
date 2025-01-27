@@ -88,18 +88,21 @@ export function confirmation(
   packageManager: PackageManager,
   gitInit: boolean,
 ) {
+  const url = colorette.italic(colorette.magentaBright(`https://github.com/mkvlrn/${projectType}`));
   const highlightType = colorette.redBright(projectType.split("-").pop() ?? "Unknown");
   const highlightProject = colorette.redBright(`./${projectName}`);
   const highlightPackageInstallation = installPackages
-    ? colorette.redBright(`will be installed with ${packageManager}`)
+    ? colorette.redBright(`will be installed with ${colorette.greenBright(packageManager)}`)
     : colorette.redBright("will not be installed");
   const highlightGitInit = colorette.redBright(`will ${gitInit ? "" : "not "}be initialized`);
-  let message = `This will create a ${highlightType} project in ${highlightProject}.\n`;
+  let message = `Using template ${url}\n`;
+  message += `A new ${highlightType} project will be created in ${highlightProject}.\n`;
   message += `Packages ${highlightPackageInstallation}.\n`;
   message += `A git repository ${highlightGitInit}.\n`;
+  message += "Do you want to continue?";
 
   return prompts.select({
-    message: colorette.dim(colorette.yellow(`${message}Continue?`)),
+    message: colorette.dim(colorette.yellow(message)),
     choices: [
       { value: true, name: "Yes" },
       { value: false, name: "No" },
