@@ -1,11 +1,11 @@
 #!/usr/bin/env node
+import * as github from "#lib/github.ts";
+import * as prompts from "#lib/prompts.ts";
+import * as system from "#lib/system.ts";
+import type { PackageManager } from "#types.ts";
 import fs from "node:fs/promises";
 import path from "node:path";
 import ora from "ora";
-import * as github from "~/lib/github";
-import * as prompts from "~/lib/prompts";
-import * as system from "~/lib/system";
-import type { PackageManager } from "~/types";
 
 const spinner = ora();
 let errorPath = "";

@@ -1,3 +1,4 @@
+import { type PackageManager, packageManagers } from "#types.ts";
 import { ExitPromptError } from "@inquirer/core";
 import * as colorette from "colorette";
 import type { ExecSyncOptionsWithBufferEncoding } from "node:child_process";
@@ -8,7 +9,6 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { promisify } from "node:util";
 import type { Ora } from "ora";
-import { type PackageManager, packageManagers } from "~/types";
 
 const exec = promisify(childProcess.exec);
 

@@ -16,6 +16,9 @@
   "engines": {
     "node": ">=22"
   },
+  "imports": {
+    "#*": "./src/*"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
@@ -24,7 +27,7 @@
   "scripts": {
     "prebuild": "rm -rf build",
     "build": "tsup",
-    "dev": "node --import=tsx --watch src/main.ts",
+    "dev": "node --watch src/main.ts",
     "start": "node build/main.js",
     "test:ci": "yarn test --bail=1 --reporter=default && yarn test:e2e --bail=1 --reporter=default",
     "test": "vitest",
@@ -42,7 +45,6 @@
     "@types/node": "^22.10.10",
     "husky": "^9.1.7",
     "tsup": "^8.3.6",
-    "tsx": "^4.19.2",
     "typescript": "^5.7.3"
   },
   "dependencies": {

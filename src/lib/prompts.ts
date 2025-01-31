@@ -1,8 +1,7 @@
+import { packageManagers, type GithubRepoResponse, type PackageManager } from "#types.ts";
 import * as prompts from "@inquirer/prompts";
 import * as colorette from "colorette";
 import fs from "node:fs/promises";
-import type { GithubRepoResponse } from "~/types";
-import { type PackageManager, packageManagers } from "~/types";
 
 export function projectType(templateList: GithubRepoResponse[]) {
   return prompts.select({

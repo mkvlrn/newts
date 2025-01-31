@@ -1,7 +1,7 @@
+import type { GithubRepoResponse } from "#types.ts";
 import AdmZip from "adm-zip";
 import fs from "node:fs/promises";
 import path from "node:path";
-import type { GithubRepoResponse } from "~/types";
 
 export async function fetchRepo(templateName: string, projectName: string): Promise<void> {
   try {
