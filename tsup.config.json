@@ -6,11 +6,14 @@
   "target": "esnext",
   "platform": "node",
   "bundle": true,
-  "sourcemap": false,
+  "sourcemap": true,
   "dts": false,
   "splitting": false,
   "cjsInterop": false,
   "minify": false,
   "external": [],
-  "noExternal": ["@inquirer/core", "@inquirer/prompts", "adm-zip", "colorette", "ora"]
+  "noExternal": ["@inquirer/core", "@inquirer/prompts", "adm-zip", "colorette", "ora"],
+  "banner": {
+    "js": "import { createRequire } from 'module'; const require = createRequire(import.meta.url);"
+  }
 }

@@ -23,7 +23,7 @@
     "access": "public",
     "registry": "https://registry.npmjs.org"
   },
-  "files": ["build/"],
+  "files": ["build/main.js"],
   "scripts": {
     "prebuild": "rm -rf build",
     "build": "tsup",
