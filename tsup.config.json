@@ -6,11 +6,11 @@
   "target": "esnext",
   "platform": "node",
   "bundle": true,
-  "sourcemap": true,
+  "sourcemap": false,
   "dts": false,
   "splitting": false,
   "cjsInterop": false,
   "minify": false,
   "external": [],
-  "noExternal": []
+  "noExternal": ["@inquirer/core", "@inquirer/prompts", "adm-zip", "colorette", "ora"]
 }

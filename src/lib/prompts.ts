@@ -19,10 +19,12 @@ export function projectType(templateList: GithubRepoResponse[]) {
 function formatSelectName(template: GithubRepoResponse) {
   const updatedDaysAgo =
     (Date.now() - new Date(template.updated_at).getTime()) / (1000 * 60 * 60 * 24);
+  const updatedAt = new Date(template.updated_at).toISOString().slice(0, 19).replace("T", " ");
 
   let name = template.name.replace("template-", "");
   name += ` - ${template.description}`;
   name += `\n    updated ${updatedDaysAgo.toFixed(0)} days ago`;
+  name += ` (${colorette.italic(colorette.magentaBright(updatedAt))})`;
 
   return name;
 }
