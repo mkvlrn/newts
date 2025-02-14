@@ -46,7 +46,7 @@ jobs:
       - name: build
         run: yarn build
       - name: remove properties from package.json
-        run: npx pkg delete scripts dependencies devDependencies
+        run: npm pkg delete scripts dependencies devDependencies
       - name: package
         run: npx semantic-release
         env:
