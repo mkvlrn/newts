@@ -58,7 +58,7 @@ try {
     process.exit(0);
   }
 
-  spinner.start(`Fetching ${projectType} template from GitHub`);
+  spinner.start(`Fetching ${projectType} from GitHub`);
   await github.fetchRepo(projectType, projectName);
   spinner.succeed();
 
