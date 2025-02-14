@@ -64,7 +64,7 @@ export function packageManager(availablePackageManagers: PackageManager[]) {
     choices: packageManagers.map((packageManager) => ({
       value: packageManager,
       name: packageManager,
-      disabled: availablePackageManagers.includes(packageManager) ? false : "not available",
+      disabled: availablePackageManagers.includes(packageManager) ? false : "(not available)",
     })),
   });
 }
