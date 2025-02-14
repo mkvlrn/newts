@@ -11,7 +11,7 @@
   "keywords": ["typescript", "cli", "templates"],
   "type": "module",
   "bin": {
-    "mkvlrn-newts": "main.js"
+    "mkvlrn-newts": "build/main.js"
   },
   "engines": {
     "node": ">=22.6"
@@ -23,11 +23,10 @@
     "access": "public",
     "registry": "https://registry.npmjs.org"
   },
-  "files": ["build/*"],
+  "files": ["build/"],
   "scripts": {
     "prebuild": "rm -rf build",
     "build": "tsup",
-    "postbuild": "cp package.json build/package.json && cp README.md build/README.md && cp LICENSE build/LICENSE && cd build && npm pkg delete imports scripts dependencies devDependencies && cd -",
     "dev": "node --experimental-strip-types --watch src/main.ts",
     "start": "node build/main.js",
     "test:ci": "yarn test --bail=1 --reporter=default && yarn test:e2e --bail=1 --reporter=default",
