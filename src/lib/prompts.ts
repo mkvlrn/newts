@@ -16,6 +16,7 @@ export function projectType(templateList: GithubRepoResponse[]) {
   });
 }
 
+const dateRegex = /(\d+)\/(\d+)\/(\d+),/;
 function formatSelectName(template: GithubRepoResponse) {
   const updatedDaysAgo =
     (Date.now() - new Date(template.updated_at).getTime()) / (1000 * 60 * 60 * 24);
@@ -28,7 +29,7 @@ function formatSelectName(template: GithubRepoResponse) {
       minute: "2-digit",
       hour12: true,
     })
-    .replace(/(\d+)\/(\d+)\/(\d+),/, "$3-$1-$2");
+    .replace(dateRegex, "$3-$1-$2");
 
   let name = template.name.replace("template-", "");
   name += ` - ${template.description}`;
