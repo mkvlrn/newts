@@ -10,7 +10,7 @@
   "dts": false,
   "splitting": false,
   "cjsInterop": false,
-  "minify": false,
+  "minify": true,
   "external": [],
   "noExternal": ["@inquirer/core", "@inquirer/prompts", "adm-zip", "colorette", "ora"],
   "banner": {
